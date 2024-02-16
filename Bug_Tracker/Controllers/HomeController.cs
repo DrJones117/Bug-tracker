@@ -13,12 +13,24 @@ public class HomeController : Controller
         _logger = logger;
     }
 
+
+    // Displays the main Landing Page for the site.
     public IActionResult Index()
     {
         return View();
     }
 
     public IActionResult BugDashBoard()
+    {
+        return View();
+    }
+
+    public IActionResult MyProjects()
+    {
+        return View();
+    }
+
+    public IActionResult Settings()
     {
         return View();
     }

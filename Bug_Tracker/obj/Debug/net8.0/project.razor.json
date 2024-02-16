@@ -19354,6 +19354,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Bug tracker\\Bug_Tracker\\Views\\Home\\MyProjects.cshtml",
+      "TargetPath": "Views\\Home\\MyProjects.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Bug tracker\\Bug_Tracker\\Views\\Home\\Index.cshtml",
       "TargetPath": "Views\\Home\\Index.cshtml",
       "FileKind": "mvc"
