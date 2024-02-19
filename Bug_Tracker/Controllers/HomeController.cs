@@ -20,16 +20,20 @@ public class HomeController : Controller
         return View();
     }
 
+
+    // Displays the bug dashboard
     public IActionResult BugDashBoard()
     {
         return View();
     }
 
+    // Displays the the projects created by the user
     public IActionResult MyProjects()
     {
         return View();
     }
 
+    // Displays the settings page
     public IActionResult Settings()
     {
         return View();
