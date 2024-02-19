@@ -19329,6 +19329,11 @@
   "RootNamespace": "Bug_Tracker",
   "Documents": [
     {
+      "FilePath": "c:\\Bug tracker\\Bug_Tracker\\Views\\User\\MyAccount.cshtml",
+      "TargetPath": "Views\\User\\MyAccount.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Bug tracker\\Bug_Tracker\\Views\\_ViewImports.cshtml",
       "TargetPath": "Views\\_ViewImports.cshtml",
       "FileKind": "mvc"
