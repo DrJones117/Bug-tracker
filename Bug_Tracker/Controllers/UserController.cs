@@ -1,9 +1,9 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using Bug_Tracker.Models;
+namespace Bug_Tracker.Controllers;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.Filters;
-namespace Bug_Tracker.Controllers;
 
 public class UserController : Controller
 {
