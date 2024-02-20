@@ -4,11 +4,11 @@
 @model LogUser
 
 <div class="bg-white rounded p-4 ms-5">
-    <h1>Login</h1>
+    <h1 class="mb-3">Login</h1>
 
     <form asp-action="LogIn" asp-controller="User" method="post">
         <div class="mb-3">
-            <label asp-for="LogEmail">Email:</label>
+            <label asp-for="LogEmail"></label>
             <input asp-for="LogEmail" class="form-control">
             <span asp-validation-for="LogEmail" class="text-danger"></span>
         </div>
