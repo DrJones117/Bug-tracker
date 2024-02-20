@@ -1,5 +1,5 @@
 using Microsoft.EntityFrameworkCore;
-using products_and_categories.Models;
+using Bug_Tracker.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 

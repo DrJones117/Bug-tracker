@@ -1,16 +1,16 @@
 @{
     ViewData["Title"] = "Login";
 }
-
+@model LogUser
 
 <div class="bg-white rounded p-3 ms-5">
     <h1>Login</h1>
 
-    <form asp-action="LogIn" asp-controller="Home" method="post">
-        <div>
-            <label for="LogEmail">Email:</label>
-            <input for="LogEmail" class="form-control">
-            <span for="LogEmail" class="text-danger"></span>
+    <form asp-action="LogIn" asp-controller="User" method="post">
+        <div class="mb-3">
+            <label asp-for="LogEmail">Email:</label>
+            <input asp-for="LogEmail" class="form-control">
+            <span asp-validation-for="LogEmail" class="text-danger"></span>
         </div>
         <button class="btn btn-primary mt-2">Log In</button>
     </form>

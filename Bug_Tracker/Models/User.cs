@@ -1,6 +1,7 @@
 #pragma warning disable CS8618
 using System.ComponentModel.DataAnnotations;
-namespace products_and_categories.Models;
+namespace Bug_Tracker.Models;
+
 
 public class User
 {
