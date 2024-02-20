@@ -1,6 +1,7 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using Bug_Tracker.Models;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Bug_Tracker.Controllers;
 
@@ -13,7 +14,14 @@ public class UserController : Controller
         _logger = logger;
     }
 
+    [HttpGet("")]
+    public  IActionResult Login_and_Reg()
+    {
+        return View();
+    }
+
     // Displays the account information for the user.
+    [HttpGet("users/myAccount")]
     public IActionResult MyAccount()
     {
         return View();
