@@ -5,7 +5,7 @@ namespace Bug_Tracker.Models;
 public class Bug
 {
     [Key]
-    public string BugId { get; set;}
+    public int BugId { get; set;}
 
     [Required]
     public string BugName { get; set; }
@@ -19,5 +19,5 @@ public class Bug
     public DateTime CreatedAt { get; set; }
     public DateTime UpdatedAt { get; set; }
 
-    public Project? Host { get; set; }
+    public Project? Project { get; set; }
 }

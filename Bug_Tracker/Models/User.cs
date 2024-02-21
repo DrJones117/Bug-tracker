@@ -2,7 +2,6 @@
 using System.ComponentModel.DataAnnotations;
 namespace Bug_Tracker.Models;
 
-
 public class User
 {
     [Key]

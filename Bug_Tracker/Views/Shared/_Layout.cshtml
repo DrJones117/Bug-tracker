@@ -10,71 +10,92 @@
     <link rel="stylesheet" href="~/Bug_Tracker.styles.css" asp-append-version="true" />
 </head>
 
-<body style="background-image: url(https://static.vecteezy.com/system/resources/previews/000/664/710/original/vector-abstract-technology-background-hi-tech-communication-digital-background.jpg); background-repeat: no-repeat; background-size: cover; background-attachment: fixed;">
-    <header>
-        <nav style="background-color: #007bff;" class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light border-bottom box-shadow mb-3">
+<body
+    style="background-image: url(https://static.vecteezy.com/system/resources/previews/000/664/710/original/vector-abstract-technology-background-hi-tech-communication-digital-background.jpg); background-repeat: no-repeat; background-size: cover; background-attachment: fixed;">
+    @{
+        var controller = ViewContext.RouteData.Values["Controller"] as string;
+        var action = ViewContext.RouteData.Values["Action"] as string;
+    }
 
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
-                    <h2>The Great Bug Tracker</h2>
-                </a>
+    @if (controller != "User" || action != "Login_and_Reg")
+    {
+        <header>
+            <nav style="background-color: #007bff;"
+                class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light border-bottom box-shadow mb-3">
 
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-                </button>
-
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between bg-white rounded">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" 
-                                asp-action="Index">
-                                <img style="height: 30px; width: 30px;" src="https://th.bing.com/th/id/OIP.O23pWqRhxVaXwaMtN1j9vQHaHa?rs=1&pid=ImgDetMain"> Home
-                            </a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home"
-                                asp-action="BugDashBoard">
-                                <img style="height: 30px; width: 30px;" src="https://th.bing.com/th/id/OIP.IE6jBbopNnKnnZnXK5AvVAHaHa?rs=1&pid=ImgDetMain">
-                                Bugs
-                            </a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home"
-                                asp-action="MyProjects">
-                                <img style="height: 30px; width: 30px;" src="https://th.bing.com/th/id/OIP.O23pWqRhxVaXwaMtN1j9vQHaHa?rs=1&pid=ImgDetMain">
-                                Projects
-                            </a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home"
-                                asp-action="Settings">
-                                <img style="height: 30px; width: 30px;" src="https://th.bing.com/th/id/R.8539f0d206abd1957f61a21dbfa2c866?rik=zXej0kz%2bdjh29g&pid=ImgRaw&r=0">
-                                Settings
-                            </a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="User"
-                                asp-action="MyAccount">
-                                <img style="height: 30px; width: 30px;" src="https://th.bing.com/th/id/OIP.fqSvfYQB0rQ-6EG_oqvonQHaHa?rs=1&pid=ImgDetMain">
-                                My Account
-                            </a>
-                        </li>
-                    </ul>
-
-                    <a class="btn btn-danger text-black me-4" asp-area="" asp-controller="User"
-                    asp-action="Login_and_Reg">
-                        Logout
+                <div class="container-fluid">
+                    <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
+                        <h2>The Great Bug Tracker</h2>
                     </a>
+
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse"
+                        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+
+                    <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between bg-white rounded p-2">
+                        <ul class="navbar-nav flex-grow-1">
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Project" asp-action="Index">
+                                    <img style="height: 30px; width: 30px;"
+                                        src="https://th.bing.com/th/id/OIP.O23pWqRhxVaXwaMtN1j9vQHaHa?rs=1&pid=ImgDetMain">
+                                    Home
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="BugDashBoard">
+                                    <img style="height: 30px; width: 30px;"
+                                        src="https://th.bing.com/th/id/OIP.IE6jBbopNnKnnZnXK5AvVAHaHa?rs=1&pid=ImgDetMain">
+                                    Bugs
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Project" asp-action="MyProjects">
+                                    <img style="height: 30px; width: 30px;"
+                                        src="https://th.bing.com/th/id/OIP.O23pWqRhxVaXwaMtN1j9vQHaHa?rs=1&pid=ImgDetMain">
+                                    Projects
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Project" asp-action="Settings">
+                                    <img style="height: 30px; width: 30px;"
+                                        src="https://th.bing.com/th/id/R.8539f0d206abd1957f61a21dbfa2c866?rik=zXej0kz%2bdjh29g&pid=ImgRaw&r=0">
+                                    Settings
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="User" asp-action="MyAccount">
+                                    <img style="height: 30px; width: 30px;"
+                                        src="https://th.bing.com/th/id/OIP.fqSvfYQB0rQ-6EG_oqvonQHaHa?rs=1&pid=ImgDetMain">
+                                    My Account
+                                </a>
+                            </li>
+                        </ul>
+                        <a class="btn btn-danger text-black me-4" asp-area="" asp-controller="User"
+                            asp-action="Login_and_Reg">
+                            Logout
+                        </a>
+                    </div>
                 </div>
-            </div>
-        </nav>
-    </header>
+            </nav>
+        </header>
+    }
+    else
+    {
+        <header>
+            <nav style="background-color: #007bff;"
+                class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light border-bottom box-shadow mb-3">
+
+                <div class="container-fluid">
+                    <h2>The Great Bug Tracker</h2>
+                </div>
+            </nav>
+        </header>
+    }
 
     <div class="container">
         <main role="main" class="pb-3">
@@ -87,6 +108,7 @@
             &copy; 2024 - Bug_Tracker - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
     </footer>
+
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>

@@ -5,7 +5,7 @@ namespace Bug_Tracker.Models;
 public class Project
 {
     [Key]
-    public string ProjectId { get; set; }
+    public int ProjectId { get; set; }
 
     [Required]
     public string ProjectName { get; set; }
@@ -14,6 +14,6 @@ public class Project
     public DateTime UpdatedAt { get; set; } = DateTime.Now;
 
 
-    public List<Bug> AllBugs { get; set; } = new List<Bug>();
     public List<JoinTable> Users { get; set; } = new List<JoinTable>();
+    public List<Bug> AllBugs { get; set; } = new List<Bug>();
 }

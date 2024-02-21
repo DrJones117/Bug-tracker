@@ -13,32 +13,9 @@ public class HomeController : Controller
         _logger = logger;
     }
 
-
-    // Displays the main Landing Page for the site.
-    [HttpGet("bugs/landingPage")]
-    public IActionResult Index()
-    {
-        return View();
-    }
-
-
     // Displays the bug dashboard
     [HttpGet("bugs/dashboard")]
     public IActionResult BugDashBoard()
-    {
-        return View();
-    }
-
-    // Displays the the projects created by the user
-    [HttpGet("bugs/myProjects")]
-    public IActionResult MyProjects()
-    {
-        return View();
-    }
-
-    // Displays the settings page
-    [HttpGet("bugs/settings")]
-    public IActionResult Settings()
     {
         return View();
     }

@@ -1,0 +1,16 @@
+@{
+    ViewData["Title"] = "Project Form";
+}
+@model Project
+
+<div class="d-flex justify-content-center">
+    <form asp-controller="Project" asp-action="AddProject" class="bg-white rounded p-5">
+        <h1 class="mb-3">Add a Project!</h1>
+
+        <label asp-for="ProjectName"></label>
+        <input asp-for="ProjectName" class="form-control">
+        <span asp-validation-for="ProjectName" class="text-danger"></span>
+
+        <button class="btn btn-primary mt-2">Add Project</button>
+    </form>
+</div>

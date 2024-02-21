@@ -2,8 +2,6 @@ using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using Bug_Tracker.Models;
 namespace Bug_Tracker.Controllers;
-// using Microsoft.AspNetCore.Identity;
-// using Microsoft.AspNetCore.Mvc.Filters;
 
 public class UserController : Controller
 {
@@ -43,7 +41,7 @@ public class UserController : Controller
             _context.Add(newUser);
             _context.SaveChanges();
 
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index", "Project");
         }
     }
 
@@ -62,7 +60,7 @@ public class UserController : Controller
             }
             else
             {
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Index", "Project");
             }
         }
         return View("Login_and_Reg");
