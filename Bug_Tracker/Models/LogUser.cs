@@ -4,7 +4,7 @@ namespace Bug_Tracker.Models;
 
 public class LogUser
 {
-    [Required(ErrorMessage = "Invalid Email/Password")]
+    [Required(ErrorMessage = "Invalid Email")]
     [Display(Name = "Email")]
     [EmailAddress]
     public string LogEmail { get; set; }

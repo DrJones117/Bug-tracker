@@ -58,14 +58,14 @@ public class UserController : Controller
             if (userInDb == null)
             {
                 ModelState.AddModelError("LogEmail", "Invalid Email");
-                return View("");
+                return View("Login_and_Reg");
             }
             else
             {
                 return RedirectToAction("Index", "Home");
             }
         }
-        return View("");
+        return View("Login_and_Reg");
     }
 
     // Displays the account information for the user.
