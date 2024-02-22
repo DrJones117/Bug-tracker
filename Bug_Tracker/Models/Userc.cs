@@ -1,6 +1,5 @@
-#pragma warning disable CS8618
 using System.ComponentModel.DataAnnotations;
-namespace Bug_Tracker.Models;
+#pragma warning disable CS8618s
 
 public class User
 {
@@ -16,5 +15,6 @@ public class User
     public DateTime CreatedAt { get; set; } = DateTime.Now;
     public DateTime UpdatedAt { get; set; } = DateTime.Now;
 
+    // Many to many with Projects through JoinTable.
     public List<JoinTable> Projects { get; set; } = new List<JoinTable>();
 }

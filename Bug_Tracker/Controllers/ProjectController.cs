@@ -29,7 +29,10 @@ public class ProjectController : Controller
     [HttpGet("projects/myProjects")]
     public IActionResult MyProjects()
     {
-        return View();
+        List<Project> AllProjects = _context.Projects.ToList();
+        ViewBag.AllProjects = new List<Project>();
+
+        return View(AllProjects);
     }
 
     // Displays the settings page

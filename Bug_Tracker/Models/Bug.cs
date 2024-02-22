@@ -1,23 +1,22 @@
-#pragma warning disable CS8618
 using System.ComponentModel.DataAnnotations;
-namespace Bug_Tracker.Models;
+#pragma warning disable CS8618
 
 public class Bug
 {
     [Key]
-    public int BugId { get; set;}
+    public int BugId { get; set; }
 
     [Required]
     public string BugName { get; set; }
 
     [Required]
-    public string Status { get; set; }
+    public string BugStatus { get; set; }
 
     [Required]
-    public string Description { get; set; }
+    public string BugDescription { get; set; }
 
-    public DateTime CreatedAt { get; set; }
-    public DateTime UpdatedAt { get; set; }
+    public int ProjectId { get; set; }
 
-    public Project? Project { get; set; }
+    // One to many with Bugs.
+    public Project? BugHost { get; set; }
 }

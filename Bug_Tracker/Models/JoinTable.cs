@@ -1,6 +1,5 @@
-#pragma warning disable CS8618
 using System.ComponentModel.DataAnnotations;
-namespace Bug_Tracker.Models;
+#pragma warning disable CS8618s
 
 public class JoinTable
 {
@@ -9,6 +8,7 @@ public class JoinTable
     public int UserId { get; set; }
     public int ProjectId { get; set; }
 
+    // nav props
     public User? User { get; set; }
     public Project? Project { get; set; }
 }

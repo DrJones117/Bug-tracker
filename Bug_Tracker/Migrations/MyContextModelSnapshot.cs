@@ -19,32 +19,26 @@ namespace Bug_Tracker.Migrations
                 .HasAnnotation("ProductVersion", "6.0.3")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
-            modelBuilder.Entity("Bug_Tracker.Models.Bug", b =>
+            modelBuilder.Entity("Bug", b =>
                 {
                     b.Property<int>("BugId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
+                    b.Property<string>("BugDescription")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
                     b.Property<string>("BugName")
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<string>("Description")
+                    b.Property<string>("BugStatus")
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<int?>("ProjectId")
+                    b.Property<int>("ProjectId")
                         .HasColumnType("int");
-
-                    b.Property<string>("Status")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
-                    b.Property<DateTime>("UpdatedAt")
-                        .HasColumnType("datetime(6)");
 
                     b.HasKey("BugId");
 
@@ -53,7 +47,7 @@ namespace Bug_Tracker.Migrations
                     b.ToTable("AllBugs");
                 });
 
-            modelBuilder.Entity("Bug_Tracker.Models.JoinTable", b =>
+            modelBuilder.Entity("JoinTable", b =>
                 {
                     b.Property<int>("JoinTableId")
                         .ValueGeneratedOnAdd()
@@ -74,7 +68,7 @@ namespace Bug_Tracker.Migrations
                     b.ToTable("Joins");
                 });
 
-            modelBuilder.Entity("Bug_Tracker.Models.Project", b =>
+            modelBuilder.Entity("Project", b =>
                 {
                     b.Property<int>("ProjectId")
                         .ValueGeneratedOnAdd()
@@ -82,6 +76,10 @@ namespace Bug_Tracker.Migrations
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime(6)");
+
+                    b.Property<string>("ProjectDescription")
+                        .IsRequired()
+                        .HasColumnType("longtext");
 
                     b.Property<string>("ProjectName")
                         .IsRequired()
@@ -95,7 +93,7 @@ namespace Bug_Tracker.Migrations
                     b.ToTable("Projects");
                 });
 
-            modelBuilder.Entity("Bug_Tracker.Models.User", b =>
+            modelBuilder.Entity("User", b =>
                 {
                     b.Property<int>("UserId")
                         .ValueGeneratedOnAdd()
@@ -120,24 +118,26 @@ namespace Bug_Tracker.Migrations
                     b.ToTable("Users");
                 });
 
-            modelBuilder.Entity("Bug_Tracker.Models.Bug", b =>
+            modelBuilder.Entity("Bug", b =>
                 {
-                    b.HasOne("Bug_Tracker.Models.Project", "Project")
+                    b.HasOne("Project", "BugHost")
                         .WithMany("AllBugs")
-                        .HasForeignKey("ProjectId");
+                        .HasForeignKey("ProjectId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                    b.Navigation("Project");
+                    b.Navigation("BugHost");
                 });
 
-            modelBuilder.Entity("Bug_Tracker.Models.JoinTable", b =>
+            modelBuilder.Entity("JoinTable", b =>
                 {
-                    b.HasOne("Bug_Tracker.Models.Project", "Project")
+                    b.HasOne("Project", "Project")
                         .WithMany("Users")
                         .HasForeignKey("ProjectId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Bug_Tracker.Models.User", "User")
+                    b.HasOne("User", "User")
                         .WithMany("Projects")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -148,14 +148,14 @@ namespace Bug_Tracker.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("Bug_Tracker.Models.Project", b =>
+            modelBuilder.Entity("Project", b =>
                 {
                     b.Navigation("AllBugs");
 
                     b.Navigation("Users");
                 });
 
-            modelBuilder.Entity("Bug_Tracker.Models.User", b =>
+            modelBuilder.Entity("User", b =>
                 {
                     b.Navigation("Projects");
                 });
