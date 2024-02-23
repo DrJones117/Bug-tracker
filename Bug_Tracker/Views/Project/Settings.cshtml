@@ -8,57 +8,47 @@
         <hr>
 
         <div class="overflow-y">
-            <button class="btn bg-white text-start rounded mb-2 w-100">
-                <div class="rounded p-1">
-                    <h4>Project</h4>
-                </div>
-            </button>
-
-            <button class="btn bg-white text-start rounded mb-2 w-100">
-                <div class="rounded p-1">
-                    <h4>Project</h4>
-                </div>
-            </button>
-
-
-            <button class="btn bg-white text-start rounded mb-2 w-100">
-                <div class="rounded p-1">
-                    <h4>Project</h4>
-                </div>
-            </button>
-
-
-            <button class="btn bg-white text-start rounded mb-2 w-100">
-                <div class="rounded p-1">
-                    <h4>Project</h4>
-                </div>
-            </button>
-
+            @foreach (var entry in Model)
+            {
+                <a asp-action="ProjectData" asp-controller="Project" asp-route-projectId="@entry.ProjectId" class="btn bg-white text-start rounded mb-2 w-100">
+                    <div class="rounded p-1">
+                        <h4>@entry.ProjectName</h4>
+                    </div>
+                </a>
+            }
         </div>
     </div>
 
     <div style="background-color: #f8f9fa;" class="text-center bg-white rounded p-4 w-75">
-        <h2 style="color: #6f42c1;" class="d-flex justify-content-start">Project Name</h2>
-        <hr>
-        
-        <div style="background-color: #007bff;" class="p-3 rounded">
-            <div style="background-color: #f8f9fa;" class="rounded p-2 mb-3">
-                <h1 class="d-flex justify-content-start">Rename Project</h1>
+        @if (ViewBag.singleProject != null)
+        {
+            <h2 style="color: #6f42c1;" class="d-flex justify-content-start">@ViewBag.ProjectName</h2>
+            <hr>
+                
+            <div style="background-color: #007bff;" class="p-3 rounded">
+                <div style="background-color: #f8f9fa;" class="rounded p-2 mb-3">
+                    <h1 class="d-flex justify-content-start">Rename Project</h1>
 
-                <div class="d-flex justify-content-between ps-3 pe-3">
-                    <p>The action will let you rename a project.</p>
-                    <button class="btn btn-secondary p-3">Rename</button>
+                    <div class="d-flex justify-content-between ps-3 pe-3">
+                        <p>The action will let you rename the @ViewBag.ProjectName project</p>
+                        <button class="btn btn-secondary p-3">Rename</button>
+                    </div>
                 </div>
-            </div>
 
-            <div style="background-color: #f8f9fa;" class="rounded p-2">
-                <h1 class="d-flex justify-content-start text-danger">Delete Project</h1>
+                <div style="background-color: #f8f9fa;" class="rounded p-2">
+                    <h1 class="d-flex justify-content-start text-danger">Delete Project</h1>
 
-                <div class="d-flex justify-content-between ps-3 pe-3">
-                    <p>The action will let you <span class="text-danger">DELETE</span> a project!</p>
-                    <button class="btn btn-danger p-3">Delete</button>
-                </div>
+                    <div class="d-flex justify-content-between ps-3 pe-3">
+                        <p>The action will let you <span class="text-danger">DELETE</span> the @ViewBag.ProjectName project!</p>
+                        <button class="btn btn-danger p-3">Delete</button>
+                    </div>
             </div>
-        </div>
+            </div>
+        }
+        else
+        {
+            <h2 style="color: #6f42c1;" class="d-flex justify-content-start">Select a Project</h2>
+            <hr>
+        }
     </div>
 </div>

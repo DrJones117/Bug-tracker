@@ -1,6 +1,8 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using Bug_Tracker.Models;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace Bug_Tracker.Controllers;
 
@@ -30,7 +32,6 @@ public class ProjectController : Controller
     public IActionResult MyProjects()
     {
         List<Project> AllProjects = _context.Projects.ToList();
-        ViewBag.AllProjects = new List<Project>();
 
         return View(AllProjects);
     }
@@ -39,7 +40,23 @@ public class ProjectController : Controller
     [HttpGet("projects/settings")]
     public IActionResult Settings()
     {
-        return View();
+        List<Project> AllProjects = _context.Projects.ToList();
+
+        Project singleProject = TempData["singleProject"] as Project;
+
+        return View(AllProjects);
+    }
+
+    // Grabs the data from the project and passing it down to the settings page.
+    [HttpPost("projects/{projectId}")]
+    public IActionResult ProjectData(int projectId)
+    {
+        Project singleProject = _context.Projects
+                                .FirstOrDefault(p => p.ProjectId == projectId);
+
+        TempData["singleProject"] = singleProject;
+
+        return RedirectToAction("Settings");
     }
 
     // Displays the Project Form

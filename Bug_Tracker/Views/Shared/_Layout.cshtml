@@ -17,7 +17,7 @@
         var action = ViewContext.RouteData.Values["Action"] as string;
     }
 
-    @if (controller != "User" || action != "Login_and_Reg")
+    @if (controller != "User" && action != "Login_and_Reg" && action != "Login" )
     {
         <header>
             <nav style="background-color: #007bff;"
