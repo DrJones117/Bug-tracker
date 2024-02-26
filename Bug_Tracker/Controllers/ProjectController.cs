@@ -42,22 +42,26 @@ public class ProjectController : Controller
     {
         List<Project> AllProjects = _context.Projects.ToList();
 
-        Project singleProject = TempData["singleProject"] as Project;
+        // Project singleProject = TempData["singleProject"] as Project;
 
         return View(AllProjects);
     }
 
     // Grabs the data from the project and passing it down to the settings page.
-    [HttpPost("projects/{projectId}")]
-    public IActionResult ProjectData(int projectId)
-    {
-        Project singleProject = _context.Projects
-                                .FirstOrDefault(p => p.ProjectId == projectId);
+    // [HttpPost("projects/{projectId}")]
+    // public IActionResult ProjectData(int projectId)
+    // {
+    //     Console.WriteLine("Route found.");
 
-        TempData["singleProject"] = singleProject;
+    //     Project singleProject = _context.Projects
+    //                             .FirstOrDefault(p => p.ProjectId == projectId);
 
-        return RedirectToAction("Settings");
-    }
+    //     Console.WriteLine($"Project: {singleProject?.ProjectName}");
+
+    //     TempData["singleProject"] = singleProject;
+
+    //     return RedirectToAction("Settings");
+    // }
 
     // Displays the Project Form
     [HttpGet("projects/new")]
