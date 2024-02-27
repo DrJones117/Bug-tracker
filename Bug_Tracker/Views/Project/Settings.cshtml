@@ -1,5 +1,9 @@
 @{
     ViewData["Title"] = "Home Page";
+
+    // Access the first project from the model
+    @using System.Linq 
+    Project selectedProject = Model.FirstOrDefault();
 }
 
 <div class="d-flex">
@@ -10,43 +14,35 @@
         <div class="overflow-y">
             @foreach (var entry in Model)
             {
-                <form asp-action="ProjectData" asp-controller="Project" asp-route-projectId="@entry.ProjectId" class="btn bg-white text-start rounded mb-2 w-100">
-                    <button class=" text-start btn fs-5 w-100">@entry.ProjectName</button>
-                </form>
+                <button class="bg-white text-start btn fs-5 w-100">@entry.ProjectName</button>
             }
         </div>
     </div>
 
     <div style="background-color: #f8f9fa;" class="text-center bg-white rounded p-4 w-75">
-        @if (ViewBag.singleProject != null)
-        {
-            <h2 style="color: #6f42c1;" class="d-flex justify-content-start">@ViewBag.ProjectName</h2>
-            <hr>
+        <h2 style="color: #6f42c1;" class="d-flex justify-content-start">@selectedProject.ProjectName</h2>
+        <!-- Display the selected project's name -->
+        <hr>
                 
-            <div style="background-color: #007bff;" class="p-3 rounded">
-                <div style="background-color: #f8f9fa;" class="rounded p-2 mb-3">
-                    <h1 class="d-flex justify-content-start">Rename Project</h1>
+        <div style="background-color: #007bff;" class="p-3 rounded">
+            <div style="background-color: #f8f9fa;" class="rounded p-2 mb-3">
+                <h1 class="d-flex justify-content-start">Rename Project</h1>
 
-                    <div class="d-flex justify-content-between ps-3 pe-3">
-                        <p>The action will let you rename the @ViewBag.ProjectName project</p>
-                        <button class="btn btn-secondary p-3">Rename</button>
-                    </div>
+                <div class="d-flex justify-content-between ps-3 pe-3">
+                    <p>The action will let you rename the project</p>
+                    <button class="btn btn-secondary p-3">Rename</button>
                 </div>
-
-                <div style="background-color: #f8f9fa;" class="rounded p-2">
-                    <h1 class="d-flex justify-content-start text-danger">Delete Project</h1>
-
-                    <div class="d-flex justify-content-between ps-3 pe-3">
-                        <p>The action will let you <span class="text-danger">DELETE</span> the @ViewBag.ProjectName project!</p>
-                        <button class="btn btn-danger p-3">Delete</button>
-                    </div>
             </div>
+
+            <div style="background-color: #f8f9fa;" class="rounded p-2">
+                <h1 class="d-flex justify-content-start text-danger">Delete Project</h1>
+
+                <div class="d-flex justify-content-between ps-3 pe-3">
+                    <p>The action will let you <span class="text-danger">DELETE</span> the @selectedProject.ProjectName project!</p>
+                    <!-- Display the selected project's name -->
+                    <button class="btn btn-danger p-3">Delete</button>
+                </div>
             </div>
-        }
-        else
-        {
-            <h2 style="color: #6f42c1;" class="d-flex justify-content-start">Select a Project</h2>
-            <hr>
-        }
+        </div>
     </div>
 </div>
