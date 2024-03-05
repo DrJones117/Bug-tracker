@@ -2,8 +2,8 @@
     ViewData["Title"] = "Home Page";
 
     // Access the first project from the model
-    @using System.Linq 
-    Project selectedProject = Model.FirstOrDefault();
+    @* @using System.Linq
+    Project selectedProject = Model.FirstOrDefault(); *@
 }
 
 <div class="d-flex">
@@ -20,7 +20,7 @@
     </div>
 
     <div style="background-color: #f8f9fa;" class="text-center bg-white rounded p-4 w-75">
-        <h2 style="color: #6f42c1;" class="d-flex justify-content-start">@selectedProject.ProjectName</h2>
+        <h2 style="color: #6f42c1;" class="d-flex justify-content-start"></h2>
         <!-- Display the selected project's name -->
         <hr>
                 
@@ -38,7 +38,7 @@
                 <h1 class="d-flex justify-content-start text-danger">Delete Project</h1>
 
                 <div class="d-flex justify-content-between ps-3 pe-3">
-                    <p>The action will let you <span class="text-danger">DELETE</span> the @selectedProject.ProjectName project!</p>
+                    <p>The action will let you <span class="text-danger">DELETE</span> the project!</p>
                     <!-- Display the selected project's name -->
                     <button class="btn btn-danger p-3">Delete</button>
                 </div>
