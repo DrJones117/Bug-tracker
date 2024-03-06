@@ -47,21 +47,19 @@ public class ProjectController : Controller
         return View(AllProjects);
     }
 
-    // Grabs the data from the project and passing it down to the settings page.
-    // [HttpPost("projects/{projectId}")]
-    // public IActionResult ProjectData(int projectId)
-    // {
-    //     Console.WriteLine("Route found.");
+    // Displays th Edit project form
+    [HttpGet("projects/{projectId}/edit")]
+    public IActionResult EditProject(int projectId)
+    {
+        if (projectId != null)
+        {
+            Project singleProject = _context.Projects.FirstOrDefault(p => p.ProjectId == projectId);
 
-    //     Project singleProject = _context.Projects
-    //                             .FirstOrDefault(p => p.ProjectId == projectId);
+            return View(singleProject);
+        }
 
-    //     Console.WriteLine($"Project: {singleProject?.ProjectName}");
-
-    //     TempData["singleProject"] = singleProject;
-
-    //     return RedirectToAction("Settings");
-    // }
+        return RedirectToAction("Settings");
+    }
 
     // Displays the Project Form
     [HttpGet("projects/new")]
