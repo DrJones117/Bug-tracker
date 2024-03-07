@@ -36,29 +36,42 @@ public class ProjectController : Controller
         return View(AllProjects);
     }
 
-    // Displays the settings page
-    [HttpGet("projects/settings")]
-    public IActionResult Settings()
-    {
-        List<Project> AllProjects = _context.Projects.ToList();
-
-        // Project singleProject = TempData["singleProject"] as Project;
-
-        return View(AllProjects);
-    }
-
     // Displays th Edit project form
     [HttpGet("projects/{projectId}/edit")]
-    public IActionResult EditProject(int projectId)
+    public IActionResult EditProjectForm(int projectId)
     {
-        if (projectId != null)
-        {
-            Project singleProject = _context.Projects.FirstOrDefault(p => p.ProjectId == projectId);
+        Console.WriteLine(projectId);
 
+        Project? singleProject = _context.Projects.FirstOrDefault(p => p.ProjectId == projectId);
+
+        if(singleProject != null)
+        {
             return View(singleProject);
         }
 
-        return RedirectToAction("Settings");
+        return RedirectToAction("Projects");
+    }
+
+    // Shoves the edited data to the database
+    [HttpPost("porjects/{projectId}/update")]
+    public IActionResult UpdateProject(Project newProject, int projectId)
+    {
+        Project? oldProject = _context.Projects.FirstOrDefault(i => i.ProjectId == projectId);
+
+        if(ModelState.IsValid)
+        {
+            oldProject.ProjectName = newProject.ProjectName;
+            oldProject.ProjectDescription = newProject.ProjectDescription;
+
+            oldProject.UpdatedAt = DateTime.Now;
+
+            _context.SaveChanges();
+
+            return RedirectToAction("MyProjects");
+        } else {
+
+            return View("EditProjectForm", oldProject);
+        }
     }
 
     // Displays the Project Form

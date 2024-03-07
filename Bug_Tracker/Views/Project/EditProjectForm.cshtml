@@ -1,0 +1,25 @@
+@{
+    ViewData["Title"] = "Edit Project Page";
+}
+@model Project
+
+
+<div class="d-flex justify-content-center">
+    <form asp-controller="Project" asp-action="UpdateProject" asp-route-projectId="@Model.ProjectId" class="bg-white rounded p-5">
+        <h1 class="mb-3">Edit your Project!</h1>
+
+        <div class="mb-3">
+            <label asp-for="ProjectName"></label>
+            <input asp-for="ProjectName" class="form-control">
+            <span asp-validation-for="ProjectName" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="ProjectDescription"></label>
+            <textarea asp-for="ProjectDescription" class="form-control"></textarea>
+            <span asp-validation-for="ProjectDescription" class="text-danger"></span>
+        </div>
+
+        <button class="btn btn-primary mt-2">Update Project</button>
+    </form>
+</div>
