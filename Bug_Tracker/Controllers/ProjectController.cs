@@ -74,6 +74,16 @@ public class ProjectController : Controller
         }
     }
 
+    [HttpPost("projects/{projectId}/delete")]
+    public IActionResult DeleteProject(int projectId)
+    {
+        Project? ProjectToDelete = _context.Projects.SingleOrDefault(i => i.ProjectId == projectId);
+
+        _context.Projects.Remove(ProjectToDelete);
+        _context.SaveChanges();
+        return RedirectToAction("ViewProject");
+    }
+
     // Displays the Project Form
     [HttpGet("projects/new")]
     public IActionResult ProjectForm()
