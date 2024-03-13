@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Bug_Tracker.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using Microsoft.AspNetCore.Http.Metadata;
 
 namespace Bug_Tracker.Controllers;
 
@@ -34,6 +35,25 @@ public class ProjectController : Controller
         List<Project> AllProjects = _context.Projects.ToList();
 
         return View(AllProjects);
+    }
+
+    // Grabs one Project and displays it on the page
+    [HttpGet("projects/{projectId}/display")]
+    public IActionResult ViewProject(int projectId)
+    {
+        Console.WriteLine(projectId);
+
+        Project? singleProject = _context.Projects
+                                .Include(u => u.Users)
+                                .Include(a => a.AllBugs)
+                                .FirstOrDefault(p => p.ProjectId == projectId);
+
+        if(singleProject != null)
+        {
+            return View(singleProject);
+        }
+
+        return RedirectToAction("Projects");
     }
 
     // Displays th Edit project form

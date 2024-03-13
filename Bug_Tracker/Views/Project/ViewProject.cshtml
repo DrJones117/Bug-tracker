@@ -1,0 +1,16 @@
+@{
+    ViewData["Title"] = "View Project Page";
+}
+
+<div class="bg-white p-4 rounded">
+    <div class="d-flex justify-content-between">
+        <h1>@Model.ProjectName</h1>
+
+        <div class="justify-content-between">
+            <h4 class="mt-3">@Model.AllBugs.Count Bugs</h4>
+            <h4 class="mt-3">@Model.Users.Count Users</h4>
+            <h4></h4>
+        </div>
+    </div>
+    <hr>
+</div>
