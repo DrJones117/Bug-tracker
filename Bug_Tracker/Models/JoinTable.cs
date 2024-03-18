@@ -12,6 +12,4 @@ public class JoinTable
     public User? User { get; set; }
     public Project? Project { get; set; }
 
-    public DateTime CreatedAt { get; set; } = DateTime.Now;
-    public DateTime UpdatedAt { get; set; } = DateTime.Now;
 }
