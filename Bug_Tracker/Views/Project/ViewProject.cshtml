@@ -5,10 +5,9 @@
 <div class="bg-white p-4 rounded">
     <div class="d-flex justify-content-between">
         <h1>@Model.ProjectName</h1>
-
         <div class="d-flex justify-content-between">
-            <a asp-action="" class="btn btn-warning mt-3 me-5">Edit Project</a>
-            <a asp-action="" class="btn btn-secondary rounded text-white pt-3 p-2">Add a Bug+</a>
+            <a asp-action="EditProjectForm" asp-controller="Project" asp-route-projectId="@Model.ProjectId" class="btn btn-warning mt-3 me-5">Edit Project</a>
+            <a asp-action="DeleteProject" asp-controller="Project" asp-route-projectId="@Model.ProjectId" class="btn btn-danger text-white mt-3">Delete Project</a>
         </div>
     </div>
     <hr>
@@ -27,11 +26,11 @@
                 <h4>Catastrophic</h4>
                 <hr>
                 <div class="h-75 overflow-auto">
-
+                    
                 </div>
             </div>
 
-            <div class="me-2 p-2 w-25 rounded text-center bg-danger">
+            <div style="background-color: #fd7e14;" class="me-2 p-2 w-25 rounded text-center">
                 <h4>Impaired</h4>
                 <hr>
                 <div class="h-75 overflow-auto">
@@ -39,7 +38,7 @@
                 </div>
             </div>
 
-            <div class="me-2 p-2 w-25 rounded text-center bg-danger">
+            <div style="background-color: #ffc107;" class="me-2 p-2 w-25 rounded text-center">
                 <h4>Non-Critical</h4>
                 <hr>
                 <div class="h-75 overflow-auto">
@@ -47,11 +46,11 @@
                 </div>
             </div>
 
-            <div class="me-2 p-2 w-25 rounded text-center bg-danger">
+            <div style="background-color: #10c7ff;" class="me-2 p-2 w-25 rounded text-center">
                 <h4>Minor</h4>
                 <hr>
                 <div class="h-75 overflow-auto">
-
+                    
                 </div>
             </div>
         </div>

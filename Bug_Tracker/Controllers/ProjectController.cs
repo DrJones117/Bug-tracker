@@ -98,6 +98,7 @@ public class ProjectController : Controller
     public IActionResult DeleteProject(int projectId)
     {
         Project? ProjectToDelete = _context.Projects.SingleOrDefault(i => i.ProjectId == projectId);
+        Console.WriteLine("Project grabbed.");
 
         _context.Projects.Remove(ProjectToDelete);
         _context.SaveChanges();

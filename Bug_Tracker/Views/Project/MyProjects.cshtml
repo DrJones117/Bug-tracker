@@ -14,7 +14,7 @@
         <div style="height: 500px; overflow: auto;" class="">
             @foreach (var project in Model)
             {
-                <a class="btn bg-secondary text-white text-start fs-5 w-100" asp-action="ViewProject" asp-route-projectId="@project.ProjectId">@project.ProjectName</a>
+                <a class="btn bg-secondary text-white text-start fs-5 mb-2 w-100" asp-action="ViewProject" asp-route-projectId="@project.ProjectId">@project.ProjectName</a>
             }
         </div>
     </div>
