@@ -98,11 +98,16 @@ public class ProjectController : Controller
     public IActionResult DeleteProject(int projectId)
     {
         Project? ProjectToDelete = _context.Projects.SingleOrDefault(i => i.ProjectId == projectId);
-        Console.WriteLine("Project grabbed.");
+        Console.WriteLine("Project grabbed");
 
-        _context.Projects.Remove(ProjectToDelete);
-        _context.SaveChanges();
-        return RedirectToAction("ViewProject");
+        if (ProjectToDelete != null)
+        {
+            Console.WriteLine(ProjectToDelete.ProjectName);
+            _context.Projects.Remove(ProjectToDelete);
+            _context.SaveChanges();
+        }
+        
+        return RedirectToAction("MyProjects");
     }
 
     // Displays the Project Form

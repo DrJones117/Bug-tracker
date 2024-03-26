@@ -7,7 +7,9 @@
         <h1>@Model.ProjectName</h1>
         <div class="d-flex justify-content-between">
             <a asp-action="EditProjectForm" asp-controller="Project" asp-route-projectId="@Model.ProjectId" class="btn btn-warning mt-3 me-5">Edit Project</a>
-            <a asp-action="DeleteProject" asp-controller="Project" asp-route-projectId="@Model.ProjectId" class="btn btn-danger text-white mt-3">Delete Project</a>
+            <form asp-action="DeleteProject" asp-controller="Project" asp-route-projectId="@Model.ProjectId" method="post">
+                <button type="submit" class="btn btn-danger mt-3 h-75">Delete Project</button>
+            </form>
         </div>
     </div>
     <hr>
